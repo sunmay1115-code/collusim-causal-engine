@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+data/raw/*
+!data/raw/.gitkeep
+*.log
+.runtime/
+.shots/
+tmp/
+results/starter_runs/
+

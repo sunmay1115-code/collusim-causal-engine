@@ -1,0 +1,44 @@
+{
+  "dataset_run_id": "synthetic_20261024T124450Z",
+  "data_source": "synthetic_validation",
+  "formula": "llm_price ~ competitor_price + own_last_price + round_number",
+  "causal": false,
+  "residual_file": "results/collusim_residuals.npz",
+  "residual_key": "pooled",
+  "default": {
+    "intercept": 0.03721814368155538,
+    "beta": 0.9516547774282632,
+    "own_last_coef": 0.030105071695107358,
+    "round_coef": 0.021337633693009103,
+    "sigma2": 0.013545581583917712,
+    "sigma": 0.11638548699867055,
+    "n": 1000,
+    "r2": 0.9589175251755973
+  },
+  "by_model": {
+    "llama3:8b": {
+      "intercept": 0.03260778889597832,
+      "beta": 0.968527740199183,
+      "own_last_coef": 0.01847838166769117,
+      "round_coef": 0.006462545898965284,
+      "sigma2": 0.012482577434567835,
+      "sigma": 0.11172545562479409,
+      "n": 500,
+      "r2": 0.9626130332696522
+    },
+    "qwen2.5:7b": {
+      "intercept": 0.04182849846713338,
+      "beta": 0.9347818146573436,
+      "own_last_coef": 0.04173176172252238,
+      "round_coef": 0.03621272148705585,
+      "sigma2": 0.014620693154363075,
+      "sigma": 0.12091605829815606,
+      "n": 500,
+      "r2": 0.9554537117750407
+    }
+  },
+  "model_order": [
+    "llama3:8b",
+    "qwen2.5:7b"
+  ]
+}

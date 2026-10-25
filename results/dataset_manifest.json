@@ -1,0 +1,65 @@
+{
+  "dataset_version": "1.0",
+  "run_id": "synthetic_20261024T124450Z",
+  "created_at": "2026-10-24T12:44:50+00:00",
+  "data_source": "synthetic_validation",
+  "models": [
+    "llama3:8b",
+    "qwen2.5:7b"
+  ],
+  "n_states_requested": 500,
+  "rows_raw": 1000,
+  "rows_valid": 1000,
+  "rows_failed": 0,
+  "valid_rows_by_model": {
+    "llama3:8b": 500,
+    "qwen2.5:7b": 500
+  },
+  "strategy_counts": {
+    "llama3:8b": {
+      "match": 265,
+      "overcut": 130,
+      "undercut": 105
+    },
+    "qwen2.5:7b": {
+      "match": 208,
+      "overcut": 166,
+      "undercut": 126
+    }
+  },
+  "temperature": 0.2,
+  "state_generator_seed": 42,
+  "features": [
+    "competitor_price",
+    "own_price",
+    "demand",
+    "round_norm",
+    "lagged_demand",
+    "market_mean_price"
+  ],
+  "strategy_rule": {
+    "epsilon": 0.05,
+    "undercut": "llm_price < competitor_price - epsilon",
+    "match": "abs(llm_price - competitor_price) <= epsilon",
+    "overcut": "llm_price > competitor_price + epsilon"
+  },
+  "prompt_variant_count": 500,
+  "prompt_sha256_set": "1c5ed5ee47ef9616590dcd0c7ebb29adc3a4d9fd48776d4a013b12741871735e",
+  "validation": {
+    "schema_ok": true,
+    "duplicate_model_state_pairs": 0,
+    "invalid_label_rows": 0,
+    "price_out_of_range_rows": 0,
+    "strategy_mismatch_rows": 0,
+    "valid_rows_by_model": {
+      "llama3:8b": 500,
+      "qwen2.5:7b": 500
+    },
+    "sample_size_ok": true
+  },
+  "files": {
+    "raw": "data/raw/llm_behavior_raw.csv",
+    "analysis_ready": "results/llm_behavior.csv",
+    "failures": "results/llm_behavior_failures.csv"
+  }
+}

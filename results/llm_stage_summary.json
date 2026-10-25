@@ -1,0 +1,9 @@
+{
+  "data_source": "synthetic_validation",
+  "dataset_run_id": "synthetic_20261024T124450Z",
+  "dataset_valid_rows": 1000,
+  "dataset_failed_rows": 0,
+  "stage_sentence_1": "llama3:8b raises its price by 0.95 units per one-unit competitor increase (90% CI [0.92, 0.98]), and matches the competitor 53.0% of the time (CI [49.3%, 56.6%]).",
+  "stage_sentence_2": "5 of the five pre-specified effects remain distinguishable from chance after Holm correction.",
+  "stage_sentence_3": "The best strategy classifier reaches macro-F1 0.54 [0.54, 0.54], while SHAP ranks competitor_price as the dominant market signal. Brier score: 0.184."
+}

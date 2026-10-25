@@ -1,0 +1,5 @@
+{
+  "status": "skipped",
+  "reason": "No real-state CSV supplied. Real data is coverage-only.",
+  "n_synthetic": 1000
+}

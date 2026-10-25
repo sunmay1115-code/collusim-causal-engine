@@ -1,0 +1,1 @@
+dataset_version,run_id,row_id,collected_at,data_source,model_name,state_id,competitor_price,own_price,demand,round_norm,lagged_demand,market_mean_price,prompt,prompt_sha256,temperature,attempt_count,raw_output,llm_price,rationale,strategy,is_valid,collection_error

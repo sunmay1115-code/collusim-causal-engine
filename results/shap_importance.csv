@@ -1,0 +1,8 @@
+model_name,feature,mean_abs_shap,rank
+random_forest_price,competitor_price,0.47124056552616367,1
+random_forest_price,lagged_demand,0.009979399484716676,2
+random_forest_price,own_price,0.006737821774527654,3
+random_forest_price,round_norm,0.005309661178498692,4
+random_forest_price,market_mean_price,0.00485556750166966,5
+random_forest_price,demand,0.0038843965547142377,6
+random_forest_price,model_is_qwen,0.0026942096384730816,7

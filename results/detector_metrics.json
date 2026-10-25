@@ -1,0 +1,38 @@
+{
+  "model": "StandardScaler + L1 logistic regression",
+  "penalty": "l1",
+  "solver": "liblinear",
+  "C": 0.014,
+  "split": {
+    "train": 420,
+    "test": 180,
+    "stratified": true
+  },
+  "training_behavior_noise": 0.1,
+  "test_behavior_noise": 0.0,
+  "auc": 0.9483333333333334,
+  "fpr_at_tpr90": 0.125,
+  "precision": 0.7058823529411765,
+  "recall": 1.0,
+  "f1": 0.8275862068965517,
+  "confusion_matrix": [
+    [
+      95,
+      25
+    ],
+    [
+      0,
+      60
+    ]
+  ],
+  "nonzero_coefficients": [
+    {
+      "feature": "max_markup",
+      "coefficient": -0.3988093070828883
+    },
+    {
+      "feature": "mutual_information",
+      "coefficient": -0.19081724379672826
+    }
+  ]
+}
