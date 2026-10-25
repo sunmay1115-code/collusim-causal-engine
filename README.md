@@ -15,19 +15,19 @@ This project presents a unified, three-part research stack. We empirically prove
 ---
 
 ### 🔬 Part 1: The Measurement Problem (Detection)
-*By [Teammate 1]*
+*By Assanali*
 **The Empirical Reality:** Auditors usually see what LLM agents do, not what they intend. We built a calibrated State-Conditional Mutual Information (CMI) detector to find covert coordination. 
 *   **The Stasis Problem (E3):** In 75 real GPT-4.1/Claude double-auction runs, colluding sellers froze their prices (87% hold rate). This stasis blinds action-based detectors.
 *   **The Intent Gap (E4):** In 12 Qwen2.5-7B games, privately instructing a pair to collude produced *textual intent*, but zero reliable behavioral signal. The detector could not separate them from independent agents.
 
 ### 🕸️ Part 2: The Intervention Trap (Enforcement)
-*By [Teammate 2]*
+*By Abilmansur*
 **The Behavioral Reality:** The obvious fix is to remove the colluding agent. We proved this fails.
 *   **The History Trap:** We replaced a colluding agent with a fresh, uninstructed newcomer. Over the next 50 rounds, the cartel survived (Profit Gain = 0.80 vs. 0.32 for a fresh pair). 
 *   **Why it fails:** LLMs are stateless. The newcomer reads the cartel's historical prices as evidence of demand and innocently continues the cartel. Even a newcomer from a different model family inherited the cartel (0.71).
 
 ### ⚙️ Part 3: The Causal Solution (Restrictions)
-*By [You / Sunny]*
+*By Man*
 **The Policy Reality:** If we cannot detect intent, and we cannot swap agents, how do we stop collusion? We built **Collusim**, a deterministic Randomized Controlled Trial simulator calibrated to these empirical behaviors.
 *   **The Ablations:** We tested Precision Loss (Noise), Message Caps, Oversight, History Resets, and a Hard Ban.
 *   **The Winner:** Injecting calibrated noise into the data feed (**Precision Loss**) reduced collusion (markup) by **74.0%**, reduced CMI coordination by **85.4%**, and **improved market welfare by 0.53%**. It avoided the stasis trap by keeping action entropy high.
