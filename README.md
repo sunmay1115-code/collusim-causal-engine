@@ -1,6 +1,3 @@
-Use this as `README.md`:
-
-```markdown
 # Collusim V9
 
 **Track 1: measuring and restricting collusion between LLM market agents**
