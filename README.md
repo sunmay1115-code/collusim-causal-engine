@@ -64,7 +64,7 @@ Across 20 paired seeds:
 - The paired markup contrast is **-4.08 percentage points**
   (90% CI: -4.72 to -3.42), where noise injection is below the hard ban.
 
-![V9 live-noise policy frontier](results/figures/live_noise_frontier.png)
+![V9 live-noise policy frontier](v9/results/figures/live_noise_frontier.png)
 
 The injected noise makes the policy frontier more diffuse and reduces the
 separation between interventions. This motivates controlled simulation for
