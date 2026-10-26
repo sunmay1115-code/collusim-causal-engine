@@ -2,32 +2,23 @@
 
 **Track 1: measuring and restricting collusion between LLM market agents**
 
-Collusim is a deterministic research stack for testing market restrictions under
-conditions where LLM agents hide intent, freeze prices, or inherit collusive
-behavior from shared history.
+Collusim is a deterministic research project for testing market restrictions
+when LLM agents hide intent, freeze prices, or inherit collusive behavior from
+shared history.
 
-V9 preserves the calibrated CMI detector, Collusim RCT, objective gates, and
-two-tab dashboard from the core V7 build. It adds a standalone live-noise stress
-test that measures whether realistic LLM stochasticity weakens causal policy
-comparisons.
+V9 extends the core V7 research build with a standalone live-noise stress test.
+It preserves the calibrated conditional mutual information (CMI) detector,
+paired-seed Collusim RCT, objective gates, and two-tab dashboard.
 
-[Read the report](report/report.pdf) |
-[Architecture](V5_ARCHITECTURE.md) |
-[Objectives](V5_OBJECTIVES.md) |
-[Restriction ranking](results/objective_1_5_restriction_ranking.csv)
+## Downloads
 
-## What V9 Adds
+- **[Download the complete V9 package](v9.zip)** - source code, data, results,
+  figures, tests, and research report.
+- **[Download the V7 core package](v7.zip)** - the deterministic detector,
+  simulator, dashboard, and core restriction ranking used by V9.
 
-- A `LiveNoiseAgent` that adds empirical residuals from local live-model runs
-  to the calibrated OLS policy.
-- A 20-seed paired comparison of three conditions: OLS baseline,
-  noise injection at strength 0.40, and a hard ban.
-- Bootstrap confidence intervals for markup effects and paired contrasts.
-- A saved live-noise Pareto figure and machine-readable summary.
-- Explicit separation between behavioral observations and causal simulation.
-
-The V9 experiment uses saved local Qwen2.5-1.5B data. It does not claim results
-from hosted GPT-4.1 or Claude runs.
+GitHub cannot browse files stored inside these ZIP packages. Download the
+archive first, then extract it locally.
 
 ## Headline Results
 
@@ -41,13 +32,13 @@ from hosted GPT-4.1 or Claude runs.
 
 Precision loss is the highest-efficiency eligible restriction. It reduces
 simulated markup by 74.0%, reduces CMI by 85.4%, improves simulated welfare by
-0.53%, and avoids a frozen-price artifact. The history reset does not beat
-continuous noise injection in the calibrated simulator.
+0.53%, and avoids a frozen-price artifact.
 
 ### V9 live-noise stress test
 
-The saved V9 dataset contains 1,353 valid local Qwen2.5-1.5B observations. The
-estimated residual standard deviation is **0.2983**.
+The V9 test injects empirical residual noise from 1,353 valid local
+Qwen2.5-1.5B observations into the calibrated OLS policy. The estimated
+residual standard deviation is **0.2983**.
 
 | Condition | Mean markup | Total welfare | Mean CMI bits |
 |---|---:|---:|---:|
@@ -64,12 +55,12 @@ Across 20 paired seeds:
 - The paired markup contrast is **-4.08 percentage points**
   (90% CI: -4.72 to -3.42), where noise injection is below the hard ban.
 
-![V9 live-noise policy frontier](v9/results/figures/live_noise_frontier.png)
+![V9 live-noise policy frontier](assets/live_noise_frontier.png)
 
-The injected noise makes the policy frontier more diffuse and reduces the
-separation between interventions. This motivates controlled simulation for
-causal comparisons while retaining live-model data for behavioral calibration
-and residual estimation.
+The empirical noise makes the policy frontier more diffuse and narrows the
+separation between interventions. Live-model data remains useful for behavioral
+calibration, but the controlled simulator provides the stable counterfactual
+needed for policy comparison.
 
 ## Evidence Stack
 
@@ -91,25 +82,9 @@ and residual estimation.
 7. **V9 live noise.** Empirical local-model residuals are injected into the OLS
    proxy and tested across 20 paired seeds.
 
-## Repository Map
-
-```text
-app.py                          Two-tab Streamlit dashboard
-run_v7_pipeline.py              Core deterministic pipeline
-src/collusim_noise_test.py      V9 live-noise ablation
-src/collusim/                   Simulator, agents, restrictions, objectives
-src/detection/                  CMI wrapper
-src/v6_robustness.py            Robustness checks
-tools/                          Official-starter validation
-tests/                          Unit and integration tests
-results/                        Saved metrics, CSVs, JSON, and figures
-report/                         Research report and figure builders
-data/experimental/              Local live-model residual dataset
-```
-
 ## Reproduce V9
 
-Install dependencies:
+Extract `v9.zip`, then install dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -121,7 +96,7 @@ Rebuild the core deterministic pipeline:
 python run_v7_pipeline.py
 ```
 
-Run the standalone V9 live-noise ablation:
+Run the V9 live-noise ablation:
 
 ```bash
 python -m src.collusim_noise_test
@@ -135,27 +110,25 @@ streamlit run app.py
 
 The dashboard reads saved artifacts and does not contact a model provider.
 
-## Tests
+Run the tests:
 
 ```bash
 python -m pytest tests -q
 ```
 
-V9-specific checks verify the empirical noise estimate, the three paired
-conditions, the 20-seed structure, the summary JSON, and the saved figure.
+## V9 Outputs
 
-## Key Outputs
+After extracting `v9.zip`, the main V9 artifacts are:
 
-- `results/live_noise_ablation.csv`: seed-level V9 outcomes.
-- `results/live_noise_ablation_summary.json`: confidence intervals and
-  condition means.
-- `results/figures/live_noise_frontier.png`: V9 frontier figure.
-- `results/objective_1_5_restriction_ranking.csv`: core restriction ranking.
-- `results/collusim_rct_raw.csv`: seed-level core RCT outcomes.
-- `results/lagged_cmi_comparison.csv`: contemporaneous and lagged CMI results.
-- `results/v6_robustness_summary.json`: bin, E3, and welfare robustness results.
-- `results/e3_consistency.csv`: real E3 wrapper consistency results.
-- `report/report.pdf`: final research report.
+- `results/live_noise_ablation.csv`
+- `results/live_noise_ablation_summary.json`
+- `results/figures/live_noise_frontier.png`
+- `results/objective_1_5_restriction_ranking.csv`
+- `results/collusim_rct_raw.csv`
+- `results/lagged_cmi_comparison.csv`
+- `results/e3_consistency.csv`
+- `results/v6_robustness_summary.json`
+- `report/report.pdf`
 
 ## Scientific Boundaries
 
@@ -180,4 +153,3 @@ conditions, the 20-seed structure, the summary JSON, and the saved figure.
 
 Built for the AI Collusion Research Sprint by Apart Research and Poseidon
 Research, October 2026.
-```
